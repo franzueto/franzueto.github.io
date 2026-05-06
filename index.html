@@ -5,7 +5,14 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>franzueto.dev - Francisco Anzueto</title>
   <meta name="description" content="Staff Android Engineer and Mobile Tech Lead with 10+ years building scalable apps used by millions. Kotlin, Jetpack Compose, Clean Architecture, AI-driven development."/>
+  <meta property="og:title" content="Francisco Anzueto - Staff Android Engineer"/>
+  <meta property="og:description" content="Staff Android Engineer and Mobile Tech Lead with 10+ years building scalable apps used by millions."/>
+  <meta property="og:image" content="https://franzueto.dev/assets/ProfilePhoto.jpg"/>
+  <meta property="og:url" content="https://franzueto.dev"/>
+  <meta property="og:type" content="website"/>
+  <meta name="twitter:card" content="summary_large_image"/>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>F</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <style>
     /* -- Theme variables -- */
@@ -91,7 +98,7 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--label-color);
-      margin-bottom: 1rem;
+      margin: 0 0 1rem;
       transition: color 0.3s;
     }
 
@@ -194,7 +201,7 @@
     }
     .sheet-backdrop.open {
       opacity: 1;
-      pointer-events: all;
+      pointer-events: auto;
     }
 
     .bottom-sheet {
@@ -221,6 +228,16 @@
       border-radius: 2px;
       margin: 0.75rem auto 1.5rem;
       transition: background-color 0.3s;
+    }
+
+    /* -- Info cards grid -- */
+    .info-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 400px) {
+      .info-cards-grid { grid-template-columns: 1fr; }
     }
 
     /* -- Transitions for theme switch -- */
@@ -309,7 +326,7 @@
 
     <!-- Info Cards -->
     <section style="max-width: 640px; width: 100%; margin-bottom: 4rem;">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+      <div class="info-cards-grid">
         <div class="info-card" style="
           background-color: var(--surface-card);
           border: 1px solid var(--border-faint);
@@ -337,7 +354,7 @@
 
     <!-- Skills -->
     <section style="max-width: 640px; width: 100%; margin-bottom: 4rem;">
-      <p class="section-label">Core Skills</p>
+      <h2 class="section-label">Core Skills</h2>
       <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
         <span class="skill-chip">Kotlin</span>
         <span class="skill-chip">Jetpack Compose</span>
@@ -358,7 +375,7 @@
 
     <!-- Experience -->
     <section style="max-width: 640px; width: 100%; margin-bottom: 4rem;">
-      <p class="section-label">Experience</p>
+      <h2 class="section-label">Experience</h2>
       <div style="border-top: 1px solid var(--border-faint); transition: border-color 0.3s;">
 
         <div class="exp-item">
@@ -367,7 +384,7 @@
               <span style="font-size: 16px; font-weight: 600; color: var(--on-surface); transition: color 0.3s;">Staff Android Engineer · Mobile Tech Lead</span>
               <span style="display: block; font-size: 14px; color: var(--accent); margin-top: 0.15rem; transition: color 0.3s;">PayPal</span>
             </div>
-            <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; color: var(--label-color); white-space: nowrap; transition: color 0.3s;">Sep 2021 – Apr 2026</span>
+            <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; color: var(--label-color); white-space: nowrap; transition: color 0.3s;">Sep 2021 - Apr 2026</span>
           </div>
           <p style="font-size: 14px; line-height: 1.6; color: var(--on-surface-muted); margin: 0; transition: color 0.3s;">
             Led architecture and development of crypto features for PayPal and Venmo, used by millions. Defined modular Clean Architecture, drove Jetpack Compose adoption, and built AI-driven engineering workflows.
@@ -377,10 +394,10 @@
         <div class="exp-item">
           <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.35rem;">
             <div>
-              <span style="font-size: 16px; font-weight: 600; color: var(--on-surface); transition: color 0.3s;">Lecturer – Mobile Application Development</span>
+              <span style="font-size: 16px; font-weight: 600; color: var(--on-surface); transition: color 0.3s;">Lecturer - Mobile Application Development</span>
               <span style="display: block; font-size: 14px; color: var(--accent); margin-top: 0.15rem; transition: color 0.3s;">Universidad del Valle de Guatemala</span>
             </div>
-            <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; color: var(--label-color); white-space: nowrap; transition: color 0.3s;">Jul 2022 – Present</span>
+            <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; color: var(--label-color); white-space: nowrap; transition: color 0.3s;">Jul 2022 - Present</span>
           </div>
           <p style="font-size: 14px; line-height: 1.6; color: var(--on-surface-muted); margin: 0; transition: color 0.3s;">
             Teaching mobile application development to undergraduate students - covering modern Android architectures, software engineering best practices, and real-world development workflows.
@@ -393,7 +410,7 @@
               <span style="font-size: 16px; font-weight: 600; color: var(--on-surface); transition: color 0.3s;">Senior → Staff Android Engineer</span>
               <span style="display: block; font-size: 14px; color: var(--accent); margin-top: 0.15rem; transition: color 0.3s;">Xoom, a PayPal Service</span>
             </div>
-            <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; color: var(--label-color); white-space: nowrap; transition: color 0.3s;">Sep 2015 – Sep 2021</span>
+            <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; color: var(--label-color); white-space: nowrap; transition: color 0.3s;">Sep 2015 - Sep 2021</span>
           </div>
           <p style="font-size: 14px; line-height: 1.6; color: var(--on-surface-muted); margin: 0; transition: color 0.3s;">
             Built and scaled core remittance features for a global platform. Designed reusable networking layers with Retrofit and GraphQL, introduced testing practices, and led the Java-to-Kotlin migration.
@@ -406,7 +423,7 @@
               <span style="font-size: 16px; font-weight: 600; color: var(--on-surface); transition: color 0.3s;">Mobile Apps &amp; Backend Developer</span>
               <span style="display: block; font-size: 14px; color: var(--accent); margin-top: 0.15rem; transition: color 0.3s;">Radii Digital Marketing</span>
             </div>
-            <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; color: var(--label-color); white-space: nowrap; transition: color 0.3s;">Aug 2014 – Sep 2015</span>
+            <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; color: var(--label-color); white-space: nowrap; transition: color 0.3s;">Aug 2014 - Sep 2015</span>
           </div>
           <p style="font-size: 14px; line-height: 1.6; color: var(--on-surface-muted); margin: 0; transition: color 0.3s;">
             Led development of mobile applications across Android, iOS, and Windows Phone. Built backend services with Python/Django, integrating REST APIs and third-party platforms.
@@ -426,7 +443,7 @@
 
     <!-- Projects (scroll anchor) -->
     <section id="projects" style="max-width: 640px; width: 100%;">
-      <p class="section-label">Projects</p>
+      <h2 class="section-label">Projects</h2>
       <div class="projects-card" style="
         background-color: var(--surface-card);
         border: 1px solid var(--border-faint);
@@ -475,10 +492,10 @@
 
   <!-- -- Projects Bottom Sheet -- -->
   <div id="sheet-backdrop" class="sheet-backdrop" onclick="closeSheet()"></div>
-  <div id="projects-sheet" class="bottom-sheet" role="dialog" aria-modal="true" aria-label="Projects">
+  <div id="projects-sheet" class="bottom-sheet" role="dialog" aria-modal="true" aria-label="Projects" aria-hidden="true">
     <div class="sheet-handle"></div>
     <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem;">
-      <p class="section-label" style="margin-bottom: 0;">Projects</p>
+      <h2 class="section-label" style="margin-bottom: 0;">Projects</h2>
       <button onclick="closeSheet()" style="
         background: none; border: none; cursor: pointer;
         color: var(--label-color); display: flex; align-items: center; padding: 0.25rem;
@@ -533,17 +550,23 @@
 
     // Bottom sheet
     function openSheet() {
-      document.getElementById('projects-sheet').classList.add('open');
+      const sheet = document.getElementById('projects-sheet');
+      sheet.classList.add('open');
+      sheet.setAttribute('aria-hidden', 'false');
       document.getElementById('sheet-backdrop').classList.add('open');
       document.getElementById('nav-projects').style.color = 'var(--accent)';
       document.body.style.overflow = 'hidden';
+      sheet.querySelector('button[aria-label="Close"]').focus();
     }
 
     function closeSheet() {
-      document.getElementById('projects-sheet').classList.remove('open');
+      const sheet = document.getElementById('projects-sheet');
+      sheet.classList.remove('open');
+      sheet.setAttribute('aria-hidden', 'true');
       document.getElementById('sheet-backdrop').classList.remove('open');
       document.getElementById('nav-projects').style.color = 'var(--label-color)';
       document.body.style.overflow = '';
+      document.getElementById('nav-projects').focus();
     }
 
     document.addEventListener('keydown', (e) => {
