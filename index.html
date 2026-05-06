@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>franzueto.dev - Francisco Anzueto</title>
+  <meta name="description" content="Staff Android Engineer and Mobile Tech Lead with 10+ years building scalable apps used by millions. Kotlin, Jetpack Compose, Clean Architecture, AI-driven development."/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <style>
+    /* -- Theme variables -- */
+    :root {
+      --bg:                  #08132a;
+      --surface-card:        #151f37;
+      --surface-deep:        #0f1a30;
+      --on-surface:          #d9e2ff;
+      --on-surface-muted:    #c5c6cd;
+      --accent:              #41e4c0;
+      --border-faint:        rgba(68,71,77,0.45);
+      --label-color:         #8f9097;
+      --chip-bg:             #151f37;
+      --chip-border:         rgba(68,71,77,0.7);
+      --chip-text:           #c5c6cd;
+      --nav-bg:              #151f37;
+      --nav-border:          rgba(68,71,77,0.45);
+      --header-bg:           rgba(8,19,42,0.85);
+      --backdrop-bg:         rgba(3,13,37,0.75);
+      --sheet-handle:        rgba(143,144,151,0.4);
+      --toggle-bg:           rgba(255,255,255,0.07);
+      --toggle-hover:        rgba(255,255,255,0.12);
+      --photo-border:        rgba(68,71,77,0.45);
+      --photo-ring:          rgba(65,228,192,0.4);
+    }
+
+    html.light {
+      --bg:                  #f2f5ff;
+      --surface-card:        #ffffff;
+      --surface-deep:        #e8edf8;
+      --on-surface:          #0d1c32;
+      --on-surface-muted:    #3d5070;
+      --accent:              #0b7a62;
+      --border-faint:        rgba(0,0,0,0.08);
+      --label-color:         #8895aa;
+      --chip-bg:             #e8edf8;
+      --chip-border:         rgba(0,0,0,0.12);
+      --chip-text:           #3d5070;
+      --nav-bg:              #ffffff;
+      --nav-border:          rgba(0,0,0,0.08);
+      --header-bg:           rgba(242,245,255,0.88);
+      --backdrop-bg:         rgba(10,25,47,0.55);
+      --sheet-handle:        rgba(0,0,0,0.12);
+      --toggle-bg:           rgba(0,0,0,0.06);
+      --toggle-hover:        rgba(0,0,0,0.1);
+      --photo-border:        rgba(0,0,0,0.1);
+      --photo-ring:          rgba(11,122,98,0.35);
+    }
+
+    /* -- Base -- */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--on-surface);
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      min-height: 100dvh;
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    /* -- Profile ring -- */
+    .profile-ring::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border: 1px solid var(--accent);
+      border-radius: 0.75rem;
+      opacity: 0.55;
+      pointer-events: none;
+      transition: border-color 0.3s;
+    }
+
+    /* -- Section label -- */
+    .section-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--label-color);
+      margin-bottom: 1rem;
+      transition: color 0.3s;
+    }
+
+    /* -- Skill chips -- */
+    .skill-chip {
+      background-color: var(--chip-bg);
+      border: 1px solid var(--chip-border);
+      color: var(--chip-text);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 0.3rem 0.8rem;
+      border-radius: 0.25rem;
+      white-space: nowrap;
+      transition: border-color 0.2s, color 0.2s, background-color 0.3s;
+      cursor: default;
+    }
+    .skill-chip:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* -- CTA buttons -- */
+    .cta-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.7rem 1.75rem;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      border-radius: 0.25rem;
+      background: transparent;
+      text-decoration: none;
+      transition: background-color 0.25s, transform 0.15s, border-color 0.3s, color 0.3s;
+    }
+    .cta-primary:hover {
+      background-color: color-mix(in srgb, var(--accent) 12%, transparent);
+      transform: translateY(-1px);
+    }
+
+    .cta-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.7rem 1.75rem;
+      border: 1px solid var(--border-faint);
+      color: var(--on-surface-muted);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      border-radius: 0.25rem;
+      background: transparent;
+      text-decoration: none;
+      transition: border-color 0.25s, color 0.25s, transform 0.15s, background-color 0.3s;
+    }
+    .cta-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* -- Experience list -- */
+    .exp-item {
+      border-bottom: 1px solid var(--border-faint);
+      padding: 1.25rem 0;
+      transition: border-color 0.3s;
+    }
+    .exp-item:last-child { border-bottom: none; }
+
+    /* -- Theme toggle button -- */
+    .theme-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      background-color: var(--toggle-bg);
+      color: var(--accent);
+      transition: background-color 0.2s, color 0.3s;
+    }
+    .theme-toggle:hover { background-color: var(--toggle-hover); }
+
+    /* -- Bottom sheet -- */
+    .sheet-backdrop {
+      position: fixed;
+      inset: 0;
+      background-color: var(--backdrop-bg);
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .sheet-backdrop.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .bottom-sheet {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 101;
+      background-color: var(--surface-card);
+      border-top: 1px solid var(--border-faint);
+      border-radius: 1rem 1rem 0 0;
+      padding: 0 1.5rem 5.5rem;
+      max-height: 85dvh;
+      overflow-y: auto;
+      transform: translateY(100%);
+      transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1), background-color 0.3s, border-color 0.3s;
+    }
+    .bottom-sheet.open { transform: translateY(0); }
+
+    .sheet-handle {
+      width: 36px;
+      height: 4px;
+      background-color: var(--sheet-handle);
+      border-radius: 2px;
+      margin: 0.75rem auto 1.5rem;
+      transition: background-color 0.3s;
+    }
+
+    /* -- Transitions for theme switch -- */
+    header, nav, .info-card, .projects-card {
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+  </style>
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100dvh;">
+
+  <!-- -- Header -- -->
+  <header id="site-header" style="
+    position: fixed; top: 0; left: 0; right: 0; height: 64px; z-index: 50;
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+    padding: 0 1.5rem;
+    background-color: var(--header-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-faint);
+    transition: background-color 0.3s, border-color 0.3s;
+  ">
+    <div></div>
+    <span style="font-size: 18px; font-weight: 600; color: var(--accent); letter-spacing: -0.01em; transition: color 0.3s;">
+      franzueto.dev
+    </span>
+    <div style="display: flex; justify-content: flex-end;">
+      <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <span class="material-symbols-outlined" id="theme-icon" style="font-size: 20px;">light_mode</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- -- Main Content -- -->
+  <main style="
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6rem max(5vw, 24px) 7rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+  ">
+
+    <!-- Hero -->
+    <section style="
+      max-width: 640px; width: 100%;
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; margin-bottom: 4rem;
+    ">
+      <!-- Profile photo -->
+      <div class="profile-ring" style="position: relative; width: 128px; height: 128px; margin-bottom: 2rem;">
+        <img
+          src="assets/ProfilePhoto.jpg"
+          alt="Francisco Anzueto"
+          style="width: 100%; height: 100%; object-fit: cover; border-radius: 0.75rem; border: 1px solid var(--photo-border); display: block;"
+        />
+      </div>
+
+      <h1 style="font-size: 48px; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; color: var(--on-surface); margin: 0 0 0.5rem; transition: color 0.3s;">
+        Francisco Anzueto
+      </h1>
+      <p style="font-size: 20px; font-weight: 600; color: var(--accent); margin: 0 0 1rem; letter-spacing: -0.01em; transition: color 0.3s;">
+        Staff Android Engineer · Mobile Tech Lead
+      </p>
+      <p style="font-size: 18px; line-height: 1.6; color: var(--on-surface-muted); max-width: 480px; margin: 0 0 2rem; transition: color 0.3s;">
+        10+ years building scalable Android applications used by millions. Focused on modern Kotlin architectures, Jetpack Compose, and AI-driven mobile development.
+      </p>
+
+      <!-- CTAs -->
+      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center;">
+        <a href="https://linkedin.com/in/franzueto" target="_blank" rel="noopener noreferrer" class="cta-primary">
+          <span class="material-symbols-outlined" style="font-size: 17px;">link</span>
+          LinkedIn
+        </a>
+        <a href="https://github.com/franzueto" target="_blank" rel="noopener noreferrer" class="cta-primary">
+          <span class="material-symbols-outlined" style="font-size: 17px;">code</span>
+          GitHub
+        </a>
+        <a href="mailto:contact@franzueto.dev" class="cta-secondary">
+          <span class="material-symbols-outlined" style="font-size: 17px;">mail</span>
+          contact@franzueto.dev
+        </a>
+      </div>
+    </section>
+
+    <!-- Info Cards -->
+    <section style="max-width: 640px; width: 100%; margin-bottom: 4rem;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+        <div class="info-card" style="
+          background-color: var(--surface-card);
+          border: 1px solid var(--border-faint);
+          border-radius: 0.5rem; padding: 1.5rem;
+        ">
+          <span class="material-symbols-outlined" style="color: var(--accent); font-size: 24px; display: block; margin-bottom: 0.75rem; transition: color 0.3s;">terminal</span>
+          <h3 style="font-size: 16px; font-weight: 600; color: var(--on-surface); margin: 0 0 0.5rem; transition: color 0.3s;">Current Focus</h3>
+          <p style="font-size: 14px; line-height: 1.6; color: var(--on-surface-muted); margin: 0; transition: color 0.3s;">
+            Building AI-driven mobile experiences with Kotlin, Jetpack Compose, and Clean Architecture. Integrating LLM tooling into engineering workflows.
+          </p>
+        </div>
+        <div class="info-card" style="
+          background-color: var(--surface-card);
+          border: 1px solid var(--border-faint);
+          border-radius: 0.5rem; padding: 1.5rem;
+        ">
+          <span class="material-symbols-outlined" style="color: var(--accent); font-size: 24px; display: block; margin-bottom: 0.75rem; transition: color 0.3s;">groups</span>
+          <h3 style="font-size: 16px; font-weight: 600; color: var(--on-surface); margin: 0 0 0.5rem; transition: color 0.3s;">At Scale</h3>
+          <p style="font-size: 14px; line-height: 1.6; color: var(--on-surface-muted); margin: 0; transition: color 0.3s;">
+            Led mobile architecture for PayPal and Venmo crypto products. Mentored 10+ engineers, drove Jetpack Compose adoption across multiple teams.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section style="max-width: 640px; width: 100%; margin-bottom: 4rem;">
+      <p class="section-label">Core Skills</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+        <span class="skill-chip">Kotlin</span>
+        <span class="skill-chip">Jetpack Compose</span>
+        <span class="skill-chip">Clean Architecture</span>
+        <span class="skill-chip">Coroutines &amp; Flow</span>
+        <span class="skill-chip">MVVM / MVI</span>
+        <span class="skill-chip">GraphQL</span>
+        <span class="skill-chip">Dagger / Hilt</span>
+        <span class="skill-chip">Kotlin Multiplatform</span>
+        <span class="skill-chip">CI/CD</span>
+        <span class="skill-chip">AI Integration</span>
+        <span class="skill-chip">System Design</span>
+        <span class="skill-chip">Technical Leadership</span>
+        <span class="skill-chip">iOS</span>
+        <span class="skill-chip">Swift</span>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section style="max-width: 640px; width: 100%; margin-bottom: 4rem;">
+      <p class="section-label">Experience</p>
+      <div style="border-top: 1px solid var(--border-faint); transition: border-color 0.3s;">
+
+        <div class="exp-item">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.35rem;">
+            <div>
+              <span style="font-size: 16px; font-weight: 600; color: var(--on-surface); transition: color 0.3s;">Staff Android Engineer · Mobile Tech Lead</span>
+              <span style="display: block; font-size: 14px; color: var(--accent); margin-top: 0.15rem; transition: color 0.3s;">PayPal</span>
+            </div>
+            <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; color: var(--label-color); white-space: nowrap; transition: color 0.3s;">Sep 2021 – Apr 2026</span>
+          </div>
+          <p style="font-size: 14px; line-height: 1.6; color: var(--on-surface-muted); margin: 0; transition: color 0.3s;">
+            Led architecture and development of crypto features for PayPal and Venmo, used by millions. Defined modular Clean Architecture, drove Jetpack Compose adoption, and built AI-driven engineering workflows.
+          </p>
+        </div>
+
+        <div class="exp-item">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.35rem;">
+            <div>
+              <span style="font-size: 16px; font-weight: 600; color: var(--on-surface); transition: color 0.3s;">Lecturer – Mobile Application Development</span>
+              <span style="display: block; font-size: 14px; color: var(--accent); margin-top: 0.15rem; transition: color 0.3s;">Universidad del Valle de Guatemala</span>
+            </div>
+            <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; color: var(--label-color); white-space: nowrap; transition: color 0.3s;">Jul 2022 – Present</span>
+          </div>
+          <p style="font-size: 14px; line-height: 1.6; color: var(--on-surface-muted); margin: 0; transition: color 0.3s;">
+            Teaching mobile application development to undergraduate students - covering modern Android architectures, software engineering best practices, and real-world development workflows.
+          </p>
+        </div>
+
+        <div class="exp-item">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.35rem;">
+            <div>
+              <span style="font-size: 16px; font-weight: 600; color: var(--on-surface); transition: color 0.3s;">Senior → Staff Android Engineer</span>
+              <span style="display: block; font-size: 14px; color: var(--accent); margin-top: 0.15rem; transition: color 0.3s;">Xoom, a PayPal Service</span>
+            </div>
+            <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; color: var(--label-color); white-space: nowrap; transition: color 0.3s;">Sep 2015 – Sep 2021</span>
+          </div>
+          <p style="font-size: 14px; line-height: 1.6; color: var(--on-surface-muted); margin: 0; transition: color 0.3s;">
+            Built and scaled core remittance features for a global platform. Designed reusable networking layers with Retrofit and GraphQL, introduced testing practices, and led the Java-to-Kotlin migration.
+          </p>
+        </div>
+
+        <div class="exp-item">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.35rem;">
+            <div>
+              <span style="font-size: 16px; font-weight: 600; color: var(--on-surface); transition: color 0.3s;">Mobile Apps &amp; Backend Developer</span>
+              <span style="display: block; font-size: 14px; color: var(--accent); margin-top: 0.15rem; transition: color 0.3s;">Radii Digital Marketing</span>
+            </div>
+            <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; color: var(--label-color); white-space: nowrap; transition: color 0.3s;">Aug 2014 – Sep 2015</span>
+          </div>
+          <p style="font-size: 14px; line-height: 1.6; color: var(--on-surface-muted); margin: 0; transition: color 0.3s;">
+            Led development of mobile applications across Android, iOS, and Windows Phone. Built backend services with Python/Django, integrating REST APIs and third-party platforms.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- See more on LinkedIn -->
+      <div style="padding-top: 1.5rem; text-align: center;">
+        <a href="https://linkedin.com/in/franzueto" target="_blank" rel="noopener noreferrer" class="cta-secondary">
+          <span class="material-symbols-outlined" style="font-size: 16px;">open_in_new</span>
+          See full experience on LinkedIn
+        </a>
+      </div>
+    </section>
+
+    <!-- Projects (scroll anchor) -->
+    <section id="projects" style="max-width: 640px; width: 100%;">
+      <p class="section-label">Projects</p>
+      <div class="projects-card" style="
+        background-color: var(--surface-card);
+        border: 1px solid var(--border-faint);
+        border-radius: 0.5rem; padding: 2.5rem;
+        text-align: center;
+      ">
+        <span class="material-symbols-outlined" style="color: var(--label-color); font-size: 32px; display: block; margin-bottom: 0.75rem; transition: color 0.3s;">folder_special</span>
+        <p style="font-size: 16px; font-weight: 600; color: var(--on-surface-muted); margin: 0 0 0.25rem; transition: color 0.3s;">Projects coming soon</p>
+        <p style="font-size: 14px; color: var(--label-color); margin: 0 0 1.5rem; transition: color 0.3s;">Open source work and personal projects will be listed here.</p>
+        <a href="https://github.com/franzueto" target="_blank" rel="noopener noreferrer" class="cta-primary">
+          <span class="material-symbols-outlined" style="font-size: 16px;">code</span>
+          Stay tuned on GitHub
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- -- Bottom Nav -- -->
+  <nav id="bottom-nav" style="
+    position: fixed; bottom: 0; left: 0; width: 100%; z-index: 50;
+    display: flex; justify-content: space-around; align-items: center;
+    height: 72px;
+    background-color: var(--nav-bg);
+    border-top: 1px solid var(--nav-border);
+    transition: background-color 0.3s, border-color 0.3s;
+  ">
+    <a id="nav-home" href="#" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: var(--accent); text-decoration: none; transition: color 0.2s;">
+      <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 22px;">home</span>
+      <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;">Home</span>
+    </a>
+    <button id="nav-projects" onclick="openSheet()" style="
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 2px; background: none; border: none; cursor: pointer;
+      color: var(--label-color); padding: 0;
+      transition: color 0.2s;
+    ">
+      <span class="material-symbols-outlined" style="font-size: 22px;">folder_special</span>
+      <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;">Projects</span>
+    </button>
+    <a href="mailto:contact@franzueto.dev" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: var(--label-color); text-decoration: none; transition: color 0.2s;">
+      <span class="material-symbols-outlined" style="font-size: 22px;">mail</span>
+      <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;">Contact</span>
+    </a>
+  </nav>
+
+  <!-- -- Projects Bottom Sheet -- -->
+  <div id="sheet-backdrop" class="sheet-backdrop" onclick="closeSheet()"></div>
+  <div id="projects-sheet" class="bottom-sheet" role="dialog" aria-modal="true" aria-label="Projects">
+    <div class="sheet-handle"></div>
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem;">
+      <p class="section-label" style="margin-bottom: 0;">Projects</p>
+      <button onclick="closeSheet()" style="
+        background: none; border: none; cursor: pointer;
+        color: var(--label-color); display: flex; align-items: center; padding: 0.25rem;
+        transition: color 0.2s;
+      " aria-label="Close">
+        <span class="material-symbols-outlined" style="font-size: 20px;">close</span>
+      </button>
+    </div>
+    <div style="
+      background-color: var(--surface-deep);
+      border: 1px solid var(--border-faint);
+      border-radius: 0.5rem; padding: 2.5rem;
+      text-align: center;
+      transition: background-color 0.3s, border-color 0.3s;
+    ">
+      <span class="material-symbols-outlined" style="color: var(--label-color); font-size: 32px; display: block; margin-bottom: 0.75rem; transition: color 0.3s;">folder_special</span>
+      <p style="font-size: 16px; font-weight: 600; color: var(--on-surface-muted); margin: 0 0 0.25rem; transition: color 0.3s;">Projects coming soon</p>
+      <p style="font-size: 14px; color: var(--label-color); margin: 0 0 1.5rem; transition: color 0.3s;">Open source work and personal projects will be listed here.</p>
+      <a href="https://github.com/franzueto" target="_blank" rel="noopener noreferrer" class="cta-primary">
+        <span class="material-symbols-outlined" style="font-size: 16px;">code</span>
+        Stay tuned on GitHub
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'fz-theme';
+
+    function applyTheme(theme) {
+      const isLight = theme === 'light';
+      document.documentElement.classList.toggle('light', isLight);
+      document.getElementById('theme-icon').textContent = isLight ? 'dark_mode' : 'light_mode';
+    }
+
+    function toggleTheme() {
+      const current = document.documentElement.classList.contains('light') ? 'light' : 'dark';
+      const next = current === 'light' ? 'dark' : 'light';
+      localStorage.setItem(STORAGE_KEY, next);
+      applyTheme(next);
+    }
+
+    // On load: use saved preference, then system preference, default to dark
+    (function () {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        applyTheme(saved);
+      } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+        applyTheme('light');
+      }
+      // default is dark (no class needed - :root vars are dark)
+    })();
+
+    // Bottom sheet
+    function openSheet() {
+      document.getElementById('projects-sheet').classList.add('open');
+      document.getElementById('sheet-backdrop').classList.add('open');
+      document.getElementById('nav-projects').style.color = 'var(--accent)';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSheet() {
+      document.getElementById('projects-sheet').classList.remove('open');
+      document.getElementById('sheet-backdrop').classList.remove('open');
+      document.getElementById('nav-projects').style.color = 'var(--label-color)';
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeSheet();
+    });
+  </script>
+
+</body>
+</html>
