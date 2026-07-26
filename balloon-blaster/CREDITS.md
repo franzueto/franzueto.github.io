@@ -1,5 +1,14 @@
 # Credits
 
+## Team
+
+- Creative direction, production and programming — Francisco Anzueto
+
+## Special thanks
+
+- My family
+- LosDeLaFoto
+
 ## Audio
 
 - "video game menu music" by magmadiverrr — https://freesound.org/s/661248/ — [CC0](https://creativecommons.org/publicdomain/zero/1.0/)
