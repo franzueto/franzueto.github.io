@@ -140,6 +140,44 @@
       transition: border-color 0.3s, color 0.3s, background-color 0.3s;
     }
 
+    /* -- Repo links (sub-entries inside a project card) -- */
+    .repo-link {
+      display: block;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--border-faint);
+      border-radius: 0.25rem;
+      text-decoration: none;
+      transition: border-color 0.2s, background-color 0.2s, transform 0.15s;
+    }
+    .repo-link + .repo-link { margin-top: 0.6rem; }
+    .repo-link:hover {
+      border-color: var(--accent);
+      background-color: color-mix(in srgb, var(--accent) 7%, transparent);
+      transform: translateY(-1px);
+    }
+    .repo-link:hover .repo-name { color: var(--accent); }
+    .repo-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--on-surface);
+      transition: color 0.2s;
+    }
+    .repo-lang {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--label-color);
+      transition: color 0.3s;
+    }
+    .repo-desc {
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--on-surface-muted);
+      margin: 0.35rem 0 0;
+      transition: color 0.3s;
+    }
+
     /* -- CTA buttons -- */
     .cta-primary {
       display: inline-flex;
@@ -482,6 +520,40 @@
         </a>
       </div>
 
+      <div class="projects-card" style="
+        background-color: var(--surface-card);
+        border: 1px solid var(--border-faint);
+        border-radius: 0.5rem; padding: 1.75rem;
+        margin-top: 1.25rem;
+      ">
+        <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.6rem;">
+          <span class="material-symbols-outlined" style="color: var(--accent); font-size: 22px; transition: color 0.3s;">school</span>
+          <p style="font-size: 16px; font-weight: 600; color: var(--on-surface); margin: 0; transition: color 0.3s;">Android Architecture &amp; Interview Prep</p>
+          <span class="status-chip">Learning resources</span>
+        </div>
+        <p style="font-size: 14px; line-height: 1.6; color: var(--on-surface-muted); margin: 0 0 1.25rem; transition: color 0.3s;">
+          Reference projects I maintain to help developers prepare for Android interviews and to teach the architectural patterns that matter in production apps — Clean Architecture, MVI/MVVM, offline-first data flow, and Kotlin Multiplatform code sharing.
+        </p>
+
+        <a href="https://github.com/franzueto/fluxit-kmp" target="_blank" rel="noopener noreferrer" data-umami-event="fluxit-click" class="repo-link">
+          <div style="display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap;">
+            <span class="repo-name">FluxIt</span>
+            <span class="repo-lang">Kotlin Multiplatform</span>
+            <span class="repo-lang" style="opacity: 0.75;">· Source available</span>
+          </div>
+          <p class="repo-desc">An offline-first list app sharing domain, data, and presentation state across Android and iOS, with native Compose and SwiftUI on top. Deliberately structured like a large codebase to demonstrate modularization, dependency boundaries, and architecture enforcement.</p>
+        </a>
+
+        <a href="https://github.com/franzueto/android-interview-example" target="_blank" rel="noopener noreferrer" data-umami-event="android-interview-click" class="repo-link">
+          <div style="display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap;">
+            <span class="repo-name">Android Interview Example</span>
+            <span class="repo-lang">Kotlin</span>
+            <span class="repo-lang" style="opacity: 0.75;">· MIT</span>
+          </div>
+          <p class="repo-desc">A compact offline-first Todo app built to rehearse the topics a Senior or Lead Android interview probes: Clean Architecture, MVVM, Room + Flow, Hilt, WorkManager, Compose, and testing. Each layer reads end-to-end in minutes, so the reasoning behind every decision stays discussable.</p>
+        </a>
+      </div>
+
       <div style="padding-top: 1.5rem; text-align: center;">
         <a href="https://github.com/franzueto" target="_blank" rel="noopener noreferrer" data-umami-event="github-click" class="cta-secondary">
           <span class="material-symbols-outlined" style="font-size: 16px;">code</span>
@@ -551,6 +623,41 @@
       <a href="/balloon-blaster/" data-umami-event="balloon-blaster-click" class="cta-primary">
         <span class="material-symbols-outlined" style="font-size: 17px;">play_arrow</span>
         Play the demo
+      </a>
+    </div>
+
+    <div style="
+      background-color: var(--surface-deep);
+      border: 1px solid var(--border-faint);
+      border-radius: 0.5rem; padding: 1.75rem;
+      margin-top: 1.25rem;
+      transition: background-color 0.3s, border-color 0.3s;
+    ">
+      <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.6rem;">
+        <span class="material-symbols-outlined" style="color: var(--accent); font-size: 22px; transition: color 0.3s;">school</span>
+        <p style="font-size: 16px; font-weight: 600; color: var(--on-surface); margin: 0; transition: color 0.3s;">Android Architecture &amp; Interview Prep</p>
+        <span class="status-chip">Learning resources</span>
+      </div>
+      <p style="font-size: 14px; line-height: 1.6; color: var(--on-surface-muted); margin: 0 0 1.25rem; transition: color 0.3s;">
+        Reference projects I maintain to help developers prepare for Android interviews and to teach the architectural patterns that matter in production apps — Clean Architecture, MVI/MVVM, offline-first data flow, and Kotlin Multiplatform code sharing.
+      </p>
+
+      <a href="https://github.com/franzueto/fluxit-kmp" target="_blank" rel="noopener noreferrer" data-umami-event="fluxit-click" class="repo-link">
+        <div style="display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap;">
+          <span class="repo-name">FluxIt</span>
+          <span class="repo-lang">Kotlin Multiplatform</span>
+          <span class="repo-lang" style="opacity: 0.75;">· Source available</span>
+        </div>
+        <p class="repo-desc">An offline-first list app sharing domain, data, and presentation state across Android and iOS, with native Compose and SwiftUI on top. Deliberately structured like a large codebase to demonstrate modularization, dependency boundaries, and architecture enforcement.</p>
+      </a>
+
+      <a href="https://github.com/franzueto/android-interview-example" target="_blank" rel="noopener noreferrer" data-umami-event="android-interview-click" class="repo-link">
+        <div style="display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap;">
+          <span class="repo-name">Android Interview Example</span>
+          <span class="repo-lang">Kotlin</span>
+          <span class="repo-lang" style="opacity: 0.75;">· MIT</span>
+        </div>
+        <p class="repo-desc">A compact offline-first Todo app built to rehearse the topics a Senior or Lead Android interview probes: Clean Architecture, MVVM, Room + Flow, Hilt, WorkManager, Compose, and testing. Each layer reads end-to-end in minutes, so the reasoning behind every decision stays discussable.</p>
       </a>
     </div>
 
