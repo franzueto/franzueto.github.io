@@ -12,6 +12,9 @@
   <meta property="og:type" content="website"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script defer src="https://cloud.umami.is/script.js"
+          data-website-id="1854972e-ce01-442b-9e39-87e7573728ee"
+          data-domains="franzueto.dev,franzueto.github.io"></script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>F</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <style>
@@ -119,6 +122,22 @@
     .skill-chip:hover {
       border-color: var(--accent);
       color: var(--accent);
+    }
+
+    /* -- Status chip (e.g. work-in-progress badges) -- */
+    .status-chip {
+      display: inline-block;
+      background-color: color-mix(in srgb, var(--accent) 12%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 0.25rem;
+      white-space: nowrap;
+      transition: border-color 0.3s, color 0.3s, background-color 0.3s;
     }
 
     /* -- CTA buttons -- */
@@ -309,15 +328,15 @@
 
       <!-- CTAs -->
       <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center;">
-        <a href="https://linkedin.com/in/franzueto" target="_blank" rel="noopener noreferrer" class="cta-primary">
+        <a href="https://linkedin.com/in/franzueto" target="_blank" rel="noopener noreferrer" data-umami-event="linkedin-click" class="cta-primary">
           <span class="material-symbols-outlined" style="font-size: 17px;">link</span>
           LinkedIn
         </a>
-        <a href="https://github.com/franzueto" target="_blank" rel="noopener noreferrer" class="cta-primary">
+        <a href="https://github.com/franzueto" target="_blank" rel="noopener noreferrer" data-umami-event="github-click" class="cta-primary">
           <span class="material-symbols-outlined" style="font-size: 17px;">code</span>
           GitHub
         </a>
-        <a href="mailto:contact@franzueto.dev" class="cta-secondary">
+        <a href="mailto:contact@franzueto.dev" data-umami-event="email-click" class="cta-secondary">
           <span class="material-symbols-outlined" style="font-size: 17px;">mail</span>
           contact@franzueto.dev
         </a>
@@ -434,7 +453,7 @@
 
       <!-- See more on LinkedIn -->
       <div style="padding-top: 1.5rem; text-align: center;">
-        <a href="https://linkedin.com/in/franzueto" target="_blank" rel="noopener noreferrer" class="cta-secondary">
+        <a href="https://linkedin.com/in/franzueto" target="_blank" rel="noopener noreferrer" data-umami-event="linkedin-click" class="cta-secondary">
           <span class="material-symbols-outlined" style="font-size: 16px;">open_in_new</span>
           See full experience on LinkedIn
         </a>
@@ -447,15 +466,26 @@
       <div class="projects-card" style="
         background-color: var(--surface-card);
         border: 1px solid var(--border-faint);
-        border-radius: 0.5rem; padding: 2.5rem;
-        text-align: center;
+        border-radius: 0.5rem; padding: 1.75rem;
       ">
-        <span class="material-symbols-outlined" style="color: var(--label-color); font-size: 32px; display: block; margin-bottom: 0.75rem; transition: color 0.3s;">folder_special</span>
-        <p style="font-size: 16px; font-weight: 600; color: var(--on-surface-muted); margin: 0 0 0.25rem; transition: color 0.3s;">Projects coming soon</p>
-        <p style="font-size: 14px; color: var(--label-color); margin: 0 0 1.5rem; transition: color 0.3s;">Open source work and personal projects will be listed here.</p>
-        <a href="https://github.com/franzueto" target="_blank" rel="noopener noreferrer" class="cta-primary">
+        <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.6rem;">
+          <span class="material-symbols-outlined" style="color: var(--accent); font-size: 22px; transition: color 0.3s;">sports_esports</span>
+          <p style="font-size: 16px; font-weight: 600; color: var(--on-surface); margin: 0; transition: color 0.3s;">Balloon Blaster</p>
+          <span class="status-chip">Demo · In development</span>
+        </div>
+        <p style="font-size: 14px; line-height: 1.6; color: var(--on-surface-muted); margin: 0 0 1.25rem; transition: color 0.3s;">
+          A browser-based arcade game built with Phaser 3 — aim, shoot, and clear the balloons across increasing levels. This is an early demo and is still in active development, so expect rough edges and changing mechanics.
+        </p>
+        <a href="/balloon-blaster/" data-umami-event="balloon-blaster-click" class="cta-primary">
+          <span class="material-symbols-outlined" style="font-size: 17px;">play_arrow</span>
+          Play the demo
+        </a>
+      </div>
+
+      <div style="padding-top: 1.5rem; text-align: center;">
+        <a href="https://github.com/franzueto" target="_blank" rel="noopener noreferrer" data-umami-event="github-click" class="cta-secondary">
           <span class="material-symbols-outlined" style="font-size: 16px;">code</span>
-          Stay tuned on GitHub
+          More projects on GitHub
         </a>
       </div>
     </section>
@@ -484,7 +514,7 @@
       <span class="material-symbols-outlined" style="font-size: 22px;">folder_special</span>
       <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;">Projects</span>
     </button>
-    <a href="mailto:contact@franzueto.dev" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: var(--label-color); text-decoration: none; transition: color 0.2s;">
+    <a href="mailto:contact@franzueto.dev" data-umami-event="email-click" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: var(--label-color); text-decoration: none; transition: color 0.2s;">
       <span class="material-symbols-outlined" style="font-size: 22px;">mail</span>
       <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;">Contact</span>
     </a>
@@ -507,16 +537,27 @@
     <div style="
       background-color: var(--surface-deep);
       border: 1px solid var(--border-faint);
-      border-radius: 0.5rem; padding: 2.5rem;
-      text-align: center;
+      border-radius: 0.5rem; padding: 1.75rem;
       transition: background-color 0.3s, border-color 0.3s;
     ">
-      <span class="material-symbols-outlined" style="color: var(--label-color); font-size: 32px; display: block; margin-bottom: 0.75rem; transition: color 0.3s;">folder_special</span>
-      <p style="font-size: 16px; font-weight: 600; color: var(--on-surface-muted); margin: 0 0 0.25rem; transition: color 0.3s;">Projects coming soon</p>
-      <p style="font-size: 14px; color: var(--label-color); margin: 0 0 1.5rem; transition: color 0.3s;">Open source work and personal projects will be listed here.</p>
-      <a href="https://github.com/franzueto" target="_blank" rel="noopener noreferrer" class="cta-primary">
+      <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.6rem;">
+        <span class="material-symbols-outlined" style="color: var(--accent); font-size: 22px; transition: color 0.3s;">sports_esports</span>
+        <p style="font-size: 16px; font-weight: 600; color: var(--on-surface); margin: 0; transition: color 0.3s;">Balloon Blaster</p>
+        <span class="status-chip">Demo · In development</span>
+      </div>
+      <p style="font-size: 14px; line-height: 1.6; color: var(--on-surface-muted); margin: 0 0 1.25rem; transition: color 0.3s;">
+        A browser-based arcade game built with Phaser 3 — aim, shoot, and clear the balloons across increasing levels. This is an early demo and is still in active development, so expect rough edges and changing mechanics.
+      </p>
+      <a href="/balloon-blaster/" data-umami-event="balloon-blaster-click" class="cta-primary">
+        <span class="material-symbols-outlined" style="font-size: 17px;">play_arrow</span>
+        Play the demo
+      </a>
+    </div>
+
+    <div style="padding-top: 1.25rem; text-align: center;">
+      <a href="https://github.com/franzueto" target="_blank" rel="noopener noreferrer" data-umami-event="github-click" class="cta-secondary">
         <span class="material-symbols-outlined" style="font-size: 16px;">code</span>
-        Stay tuned on GitHub
+        More projects on GitHub
       </a>
     </div>
   </div>
